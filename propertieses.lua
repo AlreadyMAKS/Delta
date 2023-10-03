@@ -388,7 +388,7 @@ local UpdatingFunctions = {
 			local Tool = nil
 
 			for i,tool in pairs(Character:GetChildren()) do
-				if tool:IsA("Model") and tool:FindFirstChild("Attachments") then 
+				if tool:IsA("Model") and tool:FindFirstChild("Barrel") then 
 					Tool = tool
 				end
 			end
