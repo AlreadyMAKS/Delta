@@ -385,7 +385,13 @@ local UpdatingFunctions = {
 			local Humanoid = FindFirstChildOfClass(Character, "Humanoid")
 			local Health, MaxHealth = Humanoid and __index(Humanoid, "Health") or Nan, Humanoid and __index(Humanoid, "MaxHealth") or Nan
 
-			local Tool = Settings.DisplayTool and FindFirstChildOfClass(Character, "Tool")
+			local Tool = nil
+
+			for i,tool in pairs(Character:GetChildren()) do
+				if tool:IsA("Model") and Tool:FindFirstChild("Attachments") then 
+					Tool = tool
+				end
+			end
 
 			Content = ((Settings.DisplayDisplayName and Settings.DisplayName and DisplayName ~= Name) and stringformat("%s (%s)", DisplayName, Name) or (Settings.DisplayDisplayName and not Settings.DisplayName) and DisplayName or (not Settings.DisplayDisplayName and Settings.DisplayName) and Name or (Settings.DisplayName and Settings.DisplayDisplayName and DisplayName == Name) and Name) or Content
 			Content = Settings.DisplayHealth and IsAPlayer and stringformat("[%s / %s] ", mathfloor(Health), MaxHealth)..Content or Content
