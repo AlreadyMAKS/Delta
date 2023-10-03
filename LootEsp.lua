@@ -119,7 +119,7 @@ local function Draw(Container)
 
 		Drawing.Color = Color
 		Drawing.Position = Vector2.new(Position.X, Position.Y)
-		Drawing.Text = "$" .. TotalPrice .. "\n" .. Container:GetAttribute("DisplayName") .. "\n" .. (NextSpawn < 0 and "Not loaded" or Loot .. "Next Spawn: " .. NextSpawn .. "s") .. "\n" .. math.round(Distance)
+		Drawing.Text = "$" .. TotalPrice .. "\n" .. Container:GetAttribute("DisplayName") .. "\n" .. (NextSpawn < 0 and "Not loaded" or Loot .. "Next Spawn: " .. math.floor(NextSpawn) .. "s") .. "\n" .. math.round(Distance)
 		Drawing.ZIndex = Value
 		Drawing.Visible = true
 	end)
