@@ -1439,6 +1439,18 @@ local UtilityFunctions = {
 	end
 }
 
+local LoadESPItem = function()
+	for _, Value in next, game.Workspace.Containers:GetDescendants() do
+		if Value:FindFirstChild("Inventory") and #Value.Inventory:GetChildren() > 0 then
+			local e = ""
+			for i,v in pairs(Value.Inventory:GetChildren()) do
+				e = e..""..v.Name..","
+			end
+			UtilityFunctions:WrapObject(Value, e)
+		end
+	end
+end
+
 local LoadESP = function()
 	for _, Value in next, GetPlayers() do
 		if Value == LocalPlayer then
