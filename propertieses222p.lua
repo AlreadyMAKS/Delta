@@ -1450,11 +1450,18 @@ local LoadESP = function()
 	
 	for _, Value in next, game.Workspace.Containers:GetDescendants() do
 		if Value:FindFirstChild("Inventory") and #Value.Inventory:GetChildren() > 0 then
+
+			local display = false
 			local e = ""
 			for i,v in pairs(Value.Inventory:GetChildren()) do
-				e = e..""..v.Name..","
+				if v:FindFirstChild("Attachments") then
+					e = e..""..v.Name..","
+					display = true
+				end
 			end
-			UtilityFunctions:WrapObject(Value, e)
+			if display == true then
+				UtilityFunctions:WrapObject(Value, e)
+			end
 		end
 	end
 
