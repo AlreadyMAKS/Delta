@@ -10,7 +10,6 @@ local function Draw(character)
 
     Highlight.OutlineTransparency = 1
     Highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
-    Highlight.Name = "AYO"
     Highlight.Parent = character
 
     Highlight.Enabled = _G.ESPChamsActive
@@ -30,15 +29,6 @@ local function Draw(character)
 
 end
 
-for _, v in pairs(game.Players:GetPlayers()) do
-    if v.Character then
-        Draw(v.Character)
-    end
-    v.CharacterAdded:Connect(function(character)
-        Draw(character)
-    end)
-end
-
 game.Players.PlayerAdded:Connect(function(v)
     if v.Character then
         Draw(v.Character)
@@ -47,3 +37,12 @@ game.Players.PlayerAdded:Connect(function(v)
         Draw(character)
     end)
 end)
+
+for _, v in pairs(game.Players:GetPlayers()) do
+    if v.Character then
+        Draw(v.Character)
+    end
+    v.CharacterAdded:Connect(function(character)
+        Draw(character)
+    end)
+end
