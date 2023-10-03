@@ -1465,6 +1465,25 @@ local LoadESP = function()
 		end
 	end
 
+	for _, Value in next, game.Workspace.DroppedItems:GetDescendants() do
+		if Value:FindFirstChild("Inventory") and #Value.Inventory:GetChildren() > 0 then
+
+			local display = false
+			local e = ""
+			for i,v in pairs(Value.Inventory:GetChildren()) do
+				if v:FindFirstChild("Attachments") then
+					e = e..""..v.Name..","
+					display = true
+				end
+			end
+			if display == true then
+				UtilityFunctions:WrapObject(Value, e)
+			end
+		elseif Value:FindFirstChild("Attachments") then
+			UtilityFunctions:WrapObject(Value, Value.Name)
+		end
+	end
+
 	local ServiceConnections = Environment.UtilityAssets.ServiceConnections
 
 	ServiceConnections.PlayerRemoving = Connect(__index(Players, "PlayerRemoving"), UtilityFunctions.UnwrapObject)
