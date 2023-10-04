@@ -134,10 +134,12 @@ function Skeleton:Update()
 		self:SetVisible(false);
 		return;
 	end
-
-	self:SetColor(self.Color);
+	
 	self:SetAlpha(self.Alpha);
 	self:SetThickness(self.Thickness);
+
+	self:SetColor(_G.ESPSkeletonColor);
+	self:SetVisible(_G.ESPSkeletonActive)
 
 	local update = false;
 	for _, l in pairs(self.Lines) do
