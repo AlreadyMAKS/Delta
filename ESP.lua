@@ -30,7 +30,7 @@ local function DrawChams(character)
 
 end
 
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Blissful4992/ESPs/main/UniversalSkeleton.lua"))()
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/AlreadyMAKS/Delta/main/Skeleton.lua"))()
 
 
 local Skeletons = {}
