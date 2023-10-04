@@ -30,34 +30,25 @@ local function DrawChams(character)
 
 end
 
-local function GetPositions(startpart,endpart)
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Blissful4992/ESPs/main/UniversalSkeleton.lua"))()
 
-    return camera:WorldToScreenPoint((startpart.CFrame * CFrame.new(0,startpart.Size.Y/2,0)).Position), camera:WorldToScreenPoint((endpart.CFrame * CFrame.new(0,-endpart.Size.Y/2,0)).Position)
 
-end
-
-local function DrawSkeleton(character)
-
-    local Torso = Drawing.new("Line")
-    local From,To = GetPositions(Character.UpperTorso,Character.LowerTorso)
-    Torso.From = From
-    Torso.To = To
-
-end
+local Skeletons = {}
 
 local function Draw(character)
 
-    Drawing.clear()
+    if _G.ESPActive then
+        
+        DrawChams(character)
 
-    DrawChams(character)
-
-    DrawSkeleton(character)
+    end
 
 end
 
 game.Players.PlayerAdded:Connect(function(v)
     if v.Character then
         Draw(v.Character)
+        table.insert(Skeletons, Library:NewSkeleton(Player, true));
     end
     v.CharacterAdded:Connect(function(character)
         Draw(character)
@@ -67,6 +58,7 @@ end)
 for _, v in pairs(game.Players:GetPlayers()) do
     if v.Character then
         Draw(v.Character)
+        table.insert(Skeletons, Library:NewSkeleton(Player, true));
     end
     v.CharacterAdded:Connect(function(character)
         Draw(character)
