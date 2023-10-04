@@ -1,6 +1,7 @@
 local RunService = game:GetService("RunService")
+local camera = workspace.CurrentCamera
 
-local function Draw(character)
+local function DrawChams(character)
 
     local Highlight = character:FindFirstChild("Highlight")
 
@@ -26,6 +27,31 @@ local function Draw(character)
             Connection:Disconnect()
         end
 	end)
+
+end
+
+local function GetPositions(startpart,endpart)
+
+    return camera:WorldToScreenPoint((startpart.CFrame * CFrame.new(0,startpart.Size.Y/2,0)).Position), camera:WorldToScreenPoint((endpart.CFrame * CFrame.new(0,-endpart.Size.Y/2,0)).Position)
+
+end
+
+local function DrawSkeleton(character)
+
+    local Torso = Drawing.new("Line")
+    local From,To = GetPositions(Character.UpperTorso,Character.LowerTorso)
+    Torso.From = From
+    Torso.To = To
+
+end
+
+local function Draw(character)
+
+    Drawing.clear()
+
+    DrawChams(character)
+
+    DrawSkeleton(character)
 
 end
 
