@@ -9,7 +9,7 @@ local CHEAT_CLIENT = {} do
    do
        function CHEAT_CLIENT:get_target()
            local current_target = nil
-           local maximum_distance = math.huge
+           local maximum_distance = _G.SilentAimTrigger
    
            for i,v in pairs(game.Players:GetPlayers()) do
                if v == game.Players.LocalPlayer then continue end
