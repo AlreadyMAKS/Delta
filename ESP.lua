@@ -48,7 +48,7 @@ end
 game.Players.PlayerAdded:Connect(function(v)
     if v.Character then
         Draw(v.Character)
-        table.insert(Skeletons, Library:NewSkeleton(Player, true));
+        table.insert(Skeletons, Library:NewSkeleton(v, true));
     end
     v.CharacterAdded:Connect(function(character)
         Draw(character)
@@ -58,7 +58,7 @@ end)
 for _, v in pairs(game.Players:GetPlayers()) do
     if v.Character then
         Draw(v.Character)
-        table.insert(Skeletons, Library:NewSkeleton(Player, true));
+        table.insert(Skeletons, Library:NewSkeleton(v, true));
     end
     v.CharacterAdded:Connect(function(character)
         Draw(character)
