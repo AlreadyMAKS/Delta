@@ -285,7 +285,7 @@ EnvironmentTab:AddSlider({
 	Increment = 1,
 	ValueName = "%",
 	Callback = function(Value)
-		sethiddenproperty(game:GetService("Lighting").Atmosphere, "Opacity", Value / 100)
+		sethiddenproperty(game:GetService("Lighting").Atmosphere, "Density", Value / 100)
 	end    
 })
 
