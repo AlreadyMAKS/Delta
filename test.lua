@@ -263,7 +263,7 @@ AimbotTab:AddSlider({
 
 -- EnvTab
 
-local Section = Environment:AddSection({
+local Section = EnvironmentTab:AddSection({
 	Name = "Graphics"
 })
 
