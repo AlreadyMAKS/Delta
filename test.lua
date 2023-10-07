@@ -30,6 +30,12 @@ local LootESPTab = Window:MakeTab({
 	PremiumOnly = false
 })
 
+local EnvironmentTab = Window:MakeTab({
+	Name = "Environment",
+	Icon = "rbxassetid://0",
+	PremiumOnly = false
+})
+
 --General
 
 local Section = GeneralTab:AddSection({
@@ -252,6 +258,42 @@ AimbotTab:AddSlider({
 	ValueName = "Studs",
 	Callback = function(Value)
 		_G.SilentAimTrigger = Value
+	end    
+})
+
+-- EnvTab
+
+local Section = Environment:AddSection({
+	Name = "Graphics"
+})
+
+Environment:AddDropdown({
+	Name = "Technology",
+	Default = "Future",
+	Options = {"Future", "Compatibility","ShadowMap"},
+	Callback = function(Value)
+		sethiddenproperty(game:GetService("Lighting"), "Technology", Value)
+	end    
+})
+
+Environment:AddSlider({
+	Name = "Fog",
+	Min = 0,
+	Max = 100,
+	Default = 30,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	ValueName = "%",
+	Callback = function(Value)
+		sethiddenproperty(game:GetService("Lighting").Atmosphere, "Opacity", Value / 100)
+	end    
+})
+
+Environment:AddToggle({
+	Name = "Disable Grass",
+	Default = false,
+	Callback = function(Value)
+		sethiddenproperty(game:GetService("Workspace").Terrain, "Decoration", Value)
 	end    
 })
 
