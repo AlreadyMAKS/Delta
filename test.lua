@@ -267,7 +267,7 @@ local Section = Environment:AddSection({
 	Name = "Graphics"
 })
 
-Environment:AddDropdown({
+EnvironmentTab:AddDropdown({
 	Name = "Technology",
 	Default = "Future",
 	Options = {"Future", "Compatibility","ShadowMap"},
@@ -276,7 +276,7 @@ Environment:AddDropdown({
 	end    
 })
 
-Environment:AddSlider({
+EnvironmentTab:AddSlider({
 	Name = "Fog",
 	Min = 0,
 	Max = 100,
@@ -289,7 +289,7 @@ Environment:AddSlider({
 	end    
 })
 
-Environment:AddToggle({
+EnvironmentTab:AddToggle({
 	Name = "Disable Grass",
 	Default = false,
 	Callback = function(Value)
