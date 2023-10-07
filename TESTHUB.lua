@@ -290,10 +290,18 @@ EnvironmentTab:AddSlider({
 })
 
 EnvironmentTab:AddToggle({
-	Name = "Disable Grass",
-	Default = false,
+	Name = "Enable Grass",
+	Default = true,
 	Callback = function(Value)
 		sethiddenproperty(game:GetService("Workspace").Terrain, "Decoration", Value)
+	end    
+})
+
+EnvironmentTab:AddToggle({
+	Name = "Enable SunRays",
+	Default = true,
+	Callback = function(Value)
+		sethiddenproperty(game:GetService("Lighting").SunRays, "Enabled", Value)
 	end    
 })
 
